@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Story Generator - AI Cultural Heritage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-pattern"></div>
+    <div class="floating-element elem-1">🕉️</div>
+    <div class="floating-element elem-2">🪔</div>
+    <div class="floating-element elem-3">🏛️</div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="hero-header">
+            <div class="logo-badge"></div>
+            <h1>Moral Story Generator</h1>
+            <p class="tagline">AI-Powered Cultural Heritage & Mythology Storytelling</p>
+        </header>
+
+        <!-- Selection Info -->
+        <div class="selection-bar">
+            <div class="selection-info">
+                <span class="selection-icon">🏷️</span>
+                <span>Selected: <strong id="keywordCount">0</strong> / <strong>1</strong> keyword</span>
+            </div>
+            <div class="selection-progress">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <button class="clear-btn" id="clearBtn">Clear</button>
+        </div>
+
+        <!-- Selected Keywords -->
+        <div class="selected-box" id="selectedBox">
+            <div id="selectedTags">
+                <span class="placeholder">Click any keyword below to select</span>
+            </div>
+        </div>
+
+        <!-- 12 Category Grid -->
+        <div class="keywords-grid">
+            <!-- 1. Tamil Kings -->
+            <div class="category-box">
+                <div class="category-title"><span>👑</span> Tamil Kings & Dynasties</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Raja Raja Chola">Raja Raja Chola</span>
+                    <span class="kw" data-keyword="Rajendra Chola">Rajendra Chola</span>
+                    <span class="kw" data-keyword="Karikala Chola">Karikala Chola</span>
+                    <span class="kw" data-keyword="Kulottunga Chola">Kulottunga Chola</span>
+                    <span class="kw" data-keyword="Parantaka Chola">Parantaka Chola</span>
+                    <span class="kw" data-keyword="Aditya Chola">Aditya Chola</span>
+                    <span class="kw" data-keyword="Nedunchezhiyan">Nedunchezhiyan</span>
+                    <span class="kw" data-keyword="Pandya King">Pandya King</span>
+                    <span class="kw" data-keyword="Chera King">Chera King</span>
+                    <span class="kw" data-keyword="Pallava King">Pallava King</span>
+                    <span class="kw" data-keyword="Mahendravarman">Mahendravarman</span>
+                    <span class="kw" data-keyword="Narasimhavarman">Narasimhavarman</span>
+                </div>
+            </div>
+
+            <!-- 2. Queens & Warriors -->
+            <div class="category-box">
+                <div class="category-title"><span>👸</span> Queens & Women Warriors</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Rani Velu Nachiyar">Rani Velu Nachiyar</span>
+                    <span class="kw" data-keyword="Kundavai">Kundavai</span>
+                    <span class="kw" data-keyword="Sembiyan Mahadevi">Sembiyan Mahadevi</span>
+                    <span class="kw" data-keyword="Mangammal">Mangammal</span>
+                    <span class="kw" data-keyword="Meenakshi">Queen Meenakshi</span>
+                    <span class="kw" data-keyword="Veeramangai">Veeramangai</span>
+                    <span class="kw" data-keyword="Kuyili">Kuyili</span>
+                    <span class="kw" data-keyword="Rani Mangammal">Rani Mangammal</span>
+                    <span class="kw" data-keyword="Women Warriors">Women Warriors</span>
+                    <span class="kw" data-keyword="Royal Princess">Royal Princess</span>
+                </div>
+            </div>
+
+            <!-- 3. Freedom Fighters -->
+            <div class="category-box">
+                <div class="category-title"><span>⚔️</span> Freedom Fighters</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Kattabomman">Kattabomman</span>
+                    <span class="kw" data-keyword="Dheeran Chinnamalai">Dheeran Chinnamalai</span>
+                    <span class="kw" data-keyword="Marudhu Brothers">Marudhu Brothers</span>
+                    <span class="kw" data-keyword="Puli Thevar">Puli Thevar</span>
+                    <span class="kw" data-keyword="Oomathurai">Oomathurai</span>
+                    <span class="kw" data-keyword="Tipu Sultan">Tipu Sultan</span>
+                    <span class="kw" data-keyword="Subramania Bharati">Subramania Bharati</span>
+                    <span class="kw" data-keyword="V.O. Chidambaram">V.O. Chidambaram</span>
+                    <span class="kw" data-keyword="Vanchinathan">Vanchinathan</span>
+                    <span class="kw" data-keyword="Freedom Struggle">Freedom Struggle</span>
+                    <span class="kw" data-keyword="Independence">Independence</span>
+                    <span class="kw" data-keyword="Patriot">Patriot</span>
+                </div>
+            </div>
+
+            <!-- 4. Tamil Deities -->
+            <div class="category-box">
+                <div class="category-title"><span>🕉️</span> Tamil Deities</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Murugan">Murugan</span>
+                    <span class="kw" data-keyword="Meenakshi">Meenakshi</span>
+                    <span class="kw" data-keyword="Mariamman">Mariamman</span>
+                    <span class="kw" data-keyword="Ayyanar">Ayyanar</span>
+                    <span class="kw" data-keyword="Nataraja">Nataraja</span>
+                    <span class="kw" data-keyword="Karuppasamy">Karuppasamy</span>
+                    <span class="kw" data-keyword="Angalamman">Angalamman</span>
+                    <span class="kw" data-keyword="Draupadi Amman">Draupadi Amman</span>
+                    <span class="kw" data-keyword="Vel">Vel</span>
+                    <span class="kw" data-keyword="Peacock">Peacock</span>
+                    <span class="kw" data-keyword="Devotion">Devotion</span>
+                    <span class="kw" data-keyword="Blessing">Blessing</span>
+                </div>
+            </div>
+
+            <!-- 5. Sacred Places -->
+            <div class="category-box">
+                <div class="category-title"><span>🏛️</span> Sacred Places</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Thanjavur">Thanjavur</span>
+                    <span class="kw" data-keyword="Madurai">Madurai</span>
+                    <span class="kw" data-keyword="Palani">Palani</span>
+                    <span class="kw" data-keyword="Rameswaram">Rameswaram</span>
+                    <span class="kw" data-keyword="Chidambaram">Chidambaram</span>
+                    <span class="kw" data-keyword="Thiruchendur">Thiruchendur</span>
+                    <span class="kw" data-keyword="Kanchipuram">Kanchipuram</span>
+                    <span class="kw" data-keyword="Mahabalipuram">Mahabalipuram</span>
+                    <span class="kw" data-keyword="Kumbakonam">Kumbakonam</span>
+                    <span class="kw" data-keyword="Tiruvannamalai">Tiruvannamalai</span>
+                    <span class="kw" data-keyword="Kanyakumari">Kanyakumari</span>
+                    <span class="kw" data-keyword="Srirangam">Srirangam</span>
+                </div>
+            </div>
+
+            <!-- 6. Temples & Architecture -->
+            <div class="category-box">
+                <div class="category-title"><span>🛕</span> Temples & Architecture</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Brihadeeswarar Temple">Brihadeeswarar Temple</span>
+                    <span class="kw" data-keyword="Meenakshi Temple">Meenakshi Temple</span>
+                    <span class="kw" data-keyword="Shore Temple">Shore Temple</span>
+                    <span class="kw" data-keyword="Gopuram">Gopuram</span>
+                    <span class="kw" data-keyword="Mandapa">Mandapa</span>
+                    <span class="kw" data-keyword="Stone Carving">Stone Carving</span>
+                    <span class="kw" data-keyword="Bronze Sculpture">Bronze Sculpture</span>
+                    <span class="kw" data-keyword="Temple Tank">Temple Tank</span>
+                    <span class="kw" data-keyword="Dravidian Architecture">Dravidian Style</span>
+                    <span class="kw" data-keyword="Ancient Fort">Ancient Fort</span>
+                </div>
+            </div>
+
+            <!-- 7. Literature & Saints -->
+            <div class="category-box">
+                <div class="category-title"><span>📚</span> Literature & Saints</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Thiruvalluvar">Thiruvalluvar</span>
+                    <span class="kw" data-keyword="Thirukkural">Thirukkural</span>
+                    <span class="kw" data-keyword="Avvaiyar">Avvaiyar</span>
+                    <span class="kw" data-keyword="Appar">Appar</span>
+                    <span class="kw" data-keyword="Sambandar">Sambandar</span>
+                    <span class="kw" data-keyword="Sundarar">Sundarar</span>
+                    <span class="kw" data-keyword="Manikkavasagar">Manikkavasagar</span>
+                    <span class="kw" data-keyword="Andal">Andal</span>
+                    <span class="kw" data-keyword="Ramalinga Adigal">Ramalinga Adigal</span>
+                    <span class="kw" data-keyword="Tevaram">Tevaram</span>
+                    <span class="kw" data-keyword="Tiruppavai">Tiruppavai</span>
+                    <span class="kw" data-keyword="Sangam Poetry">Sangam Poetry</span>
+                </div>
+            </div>
+
+            <!-- 8. Tamil Epics -->
+            <div class="category-box">
+                <div class="category-title"><span>📖</span> Tamil Epics</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Silappatikaram">Silappatikaram</span>
+                    <span class="kw" data-keyword="Manimekalai">Manimekalai</span>
+                    <span class="kw" data-keyword="Kannagi">Kannagi</span>
+                    <span class="kw" data-keyword="Kovalan">Kovalan</span>
+                    <span class="kw" data-keyword="Madhavi">Madhavi</span>
+                    <span class="kw" data-keyword="Sivagasindamani">Sivagasindamani</span>
+                    <span class="kw" data-keyword="Kundalakesi">Kundalakesi</span>
+                    <span class="kw" data-keyword="Valayapathi">Valayapathi</span>
+                    <span class="kw" data-keyword="Anklet">Anklet</span>
+                    <span class="kw" data-keyword="Justice">Justice</span>
+                </div>
+            </div>
+
+            <!-- 9. Indian Mythology -->
+            <div class="category-box">
+                <div class="category-title"><span>🙏</span> Indian Mythology</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Krishna">Krishna</span>
+                    <span class="kw" data-keyword="Shiva">Shiva</span>
+                    <span class="kw" data-keyword="Vishnu">Vishnu</span>
+                    <span class="kw" data-keyword="Ganesha">Ganesha</span>
+                    <span class="kw" data-keyword="Durga">Durga</span>
+                    <span class="kw" data-keyword="Hanuman">Hanuman</span>
+                    <span class="kw" data-keyword="Lakshmi">Lakshmi</span>
+                    <span class="kw" data-keyword="Saraswati">Saraswati</span>
+                    <span class="kw" data-keyword="Brahma">Brahma</span>
+                    <span class="kw" data-keyword="Kartikeya">Kartikeya</span>
+                    <span class="kw" data-keyword="Narada">Narada</span>
+                    <span class="kw" data-keyword="Indra">Indra</span>
+                </div>
+            </div>
+
+            <!-- 10. Great Epics -->
+            <div class="category-box">
+                <div class="category-title"><span>⚡</span> Ramayana & Mahabharata</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Rama">Rama</span>
+                    <span class="kw" data-keyword="Sita">Sita</span>
+                    <span class="kw" data-keyword="Ravana">Ravana</span>
+                    <span class="kw" data-keyword="Lakshmana">Lakshmana</span>
+                    <span class="kw" data-keyword="Arjuna">Arjuna</span>
+                    <span class="kw" data-keyword="Bhima">Bhima</span>
+                    <span class="kw" data-keyword="Draupadi">Draupadi</span>
+                    <span class="kw" data-keyword="Karna">Karna</span>
+                    <span class="kw" data-keyword="Bhishma">Bhishma</span>
+                    <span class="kw" data-keyword="Pandavas">Pandavas</span>
+                    <span class="kw" data-keyword="Kurukshetra">Kurukshetra</span>
+                    <span class="kw" data-keyword="Bhagavad Gita">Bhagavad Gita</span>
+                </div>
+            </div>
+
+            <!-- 11. Culture & Arts -->
+            <div class="category-box">
+                <div class="category-title"><span>🎭</span> Culture & Arts</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Bharatanatyam">Bharatanatyam</span>
+                    <span class="kw" data-keyword="Carnatic Music">Carnatic Music</span>
+                    <span class="kw" data-keyword="Tanjore Painting">Tanjore Painting</span>
+                    <span class="kw" data-keyword="Silk Weaving">Silk Weaving</span>
+                    <span class="kw" data-keyword="Kolam">Kolam</span>
+                    <span class="kw" data-keyword="Pongal">Pongal</span>
+                    <span class="kw" data-keyword="Thaipusam">Thaipusam</span>
+                    <span class="kw" data-keyword="Natyanjali">Natyanjali</span>
+                    <span class="kw" data-keyword="Veena">Veena</span>
+                    <span class="kw" data-keyword="Mridangam">Mridangam</span>
+                    <span class="kw" data-keyword="Folk Dance">Folk Dance</span>
+                    <span class="kw" data-keyword="Festival">Festival</span>
+                </div>
+            </div>
+
+            <!-- 12. Values & Themes -->
+            <div class="category-box">
+                <div class="category-title"><span>🌟</span> Values & Themes</div>
+                <div class="keywords">
+                    <span class="kw" data-keyword="Bravery">Bravery</span>
+                    <span class="kw" data-keyword="Wisdom">Wisdom</span>
+                    <span class="kw" data-keyword="Love">Love</span>
+                    <span class="kw" data-keyword="Sacrifice">Sacrifice</span>
+                    <span class="kw" data-keyword="Honor">Honor</span>
+                    <span class="kw" data-keyword="Unity">Unity</span>
+                    <span class="kw" data-keyword="Truth">Truth</span>
+                    <span class="kw" data-keyword="Dharma">Dharma</span>
+                    <span class="kw" data-keyword="Compassion">Compassion</span>
+                    <span class="kw" data-keyword="Loyalty">Loyalty</span>
+                    <span class="kw" data-keyword="Victory">Victory</span>
+                    <span class="kw" data-keyword="Peace">Peace</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Age Selection -->
+        <div class="age-section">
+            <div class="age-title">🎯 Choose Audience:</div>
+            <div class="age-options">
+                <label class="age-opt">
+                    <input type="radio" name="age" value="kids" checked>
+                    <span class="age-card">
+                        <span class="age-icon">👶</span>
+                        <span class="age-name">Kids</span>
+                        <span class="age-range">5-12 years</span>
+                    </span>
+                </label>
+                <label class="age-opt">
+                    <input type="radio" name="age" value="adults">
+                    <span class="age-card">
+                        <span class="age-icon">👨‍🎓</span>
+                        <span class="age-name">Adults</span>
+                        <span class="age-range">18+ years</span>
+                    </span>
+                </label>
+                <label class="age-opt">
+                    <input type="radio" name="age" value="all">
+                    <span class="age-card">
+                        <span class="age-icon">👨‍👩‍👧‍👦</span>
+                        <span class="age-name">Family</span>
+                        <span class="age-range">All ages</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Language Selection -->
+        <div class="language-section">
+            <div class="lang-title">🌐 Story Language:</div>
+            <div class="lang-options">
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="en" checked>
+                    <span class="lang-card">🇬🇧 English</span>
+                </label>
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="ta">
+                    <span class="lang-card">தமிழ்</span>
+                </label>
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="hi">
+                    <span class="lang-card">हिंदी</span>
+                </label>
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="te">
+                    <span class="lang-card">తెలుగు</span>
+                </label>
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="ml">
+                    <span class="lang-card">മലയാളം</span>
+                </label>
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="kn">
+                    <span class="lang-card">ಕನ್ನಡ</span>
+                </label>
+                <label class="lang-opt">
+                    <input type="radio" name="lang" value="ur">
+                    <span class="lang-card">اردو</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="generate-btn" id="generateBtn" disabled>
+            <span>✨</span> Generate Story <span>→</span>
+        </button>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Creating your magical story...</p>
+        </div>
+
+        <!-- Result -->
+        <div id="result"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Celebrating Tamil Heritage & Indian Mythology</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
