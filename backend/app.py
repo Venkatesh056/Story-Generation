@@ -3,16 +3,20 @@ Tamil Story Generator - Backend API
 """
 
 import os
+import sys
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import urllib.request
 import urllib.parse
 import json
 
-# ✅ FIXED IMPORT (important)
-from backend.story_generator import TamilStoryGenerator
+# ✅ FIX: ensure backend folder is in Python path (extra safety for Render)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-app = Flask(__name__)
+# ✅ IMPORT (works both locally + Render)
+from story_generator import TamilStoryGenerator
+
+app = Flask(__name__, static_folder=None)
 CORS(app)
 
 story_generator = TamilStoryGenerator()
@@ -67,6 +71,7 @@ def serve_static(filename):
 def generate_story():
     try:
         data = request.get_json()
+
         if not data:
             return jsonify({'success': False, 'error': 'No data provided'}), 400
 
@@ -138,6 +143,6 @@ def health():
     return jsonify({'status': 'healthy'})
 
 
-# ❌ REMOVE debug run in production (IMPORTANT)
+# ✅ Local run only
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
