@@ -9,7 +9,8 @@ import urllib.request
 import urllib.parse
 import json
 
-from story_generator import TamilStoryGenerator
+# ✅ FIXED IMPORT (important)
+from backend.story_generator import TamilStoryGenerator
 
 app = Flask(__name__)
 CORS(app)
@@ -24,7 +25,13 @@ def translate_text(text, target_lang):
         return text
     try:
         base_url = "https://translate.googleapis.com/translate_a/single"
-        params = {'client': 'gtx', 'sl': 'en', 'tl': target_lang, 'dt': 't', 'q': text}
+        params = {
+            'client': 'gtx',
+            'sl': 'en',
+            'tl': target_lang,
+            'dt': 't',
+            'q': text
+        }
         url = base_url + '?' + urllib.parse.urlencode(params)
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         response = urllib.request.urlopen(req, timeout=10)
@@ -36,49 +43,55 @@ def translate_text(text, target_lang):
         return text
 
 
+# ✅ Serve frontend
 @app.route('/')
 def serve_frontend():
-    frontend_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'frontend')
+    frontend_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        'frontend'
+    )
     return send_from_directory(frontend_path, 'index.html')
 
 
 @app.route('/<path:filename>')
 def serve_static(filename):
-    frontend_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'frontend')
+    frontend_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        'frontend'
+    )
     return send_from_directory(frontend_path, filename)
 
 
+# ✅ API route
 @app.route('/api/generate-story', methods=['POST'])
 def generate_story():
-    """Generate Tamil story"""
     try:
         data = request.get_json()
         if not data:
             return jsonify({'success': False, 'error': 'No data provided'}), 400
-        
+
         keywords = data.get('keywords', [])
         age_group = data.get('age_group', 'all')
         language = data.get('language', 'en')
-        
+
         if not keywords:
             return jsonify({'success': False, 'error': 'No keywords provided'}), 400
-        
+
         keywords = [k.strip() for k in keywords if k.strip()]
-        
+
         print(f"🎯 Generating: {keywords}, {age_group}, lang={language}")
-        
+
         story_data = story_generator.generate_tamil_story(keywords, age_group)
-        
-        # Translate if not English
+
+        # Translate
         title = translate_text(story_data.title, language) if language != 'en' else story_data.title
         moral = translate_text(story_data.moral, language) if language != 'en' else story_data.moral
-        
-        # Build pages
+
         pages = []
         for p in story_data.pages:
             page_title = translate_text(p.title, language) if language != 'en' else p.title
             page_content = translate_text(p.content, language) if language != 'en' else p.content
-            
+
             pages.append({
                 'page_number': p.page_number,
                 'title': page_title,
@@ -87,12 +100,11 @@ def generate_story():
                 'location': p.location,
                 'action': p.action
             })
-        
-        # Translate educational facts
+
         edu_facts = story_data.educational_facts
         if language != 'en' and edu_facts:
             edu_facts = [translate_text(f, language) for f in edu_facts]
-        
+
         story_dict = {
             'title': title,
             'keywords': story_data.keywords,
@@ -109,10 +121,10 @@ def generate_story():
             'total_pages': story_data.total_pages,
             'language': language
         }
-        
-        print(f"✅ Generated: {story_dict['title']} with {len(pages)} pages")
+
+        print(f"✅ Generated: {story_dict['title']}")
         return jsonify({'success': True, 'story': story_dict})
-        
+
     except Exception as e:
         print(f"❌ Error: {e}")
         import traceback
@@ -120,12 +132,12 @@ def generate_story():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+# ✅ Health check
 @app.route('/api/health', methods=['GET'])
 def health():
-    return jsonify({'status': 'healthy', 'message': 'Tamil Story Generator API running'})
+    return jsonify({'status': 'healthy'})
 
 
+# ❌ REMOVE debug run in production (IMPORTANT)
 if __name__ == '__main__':
-    print("🚀 Starting Tamil Story Generator...")
-    print("📍 http://localhost:5000")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
